@@ -1,3 +1,4 @@
+# coding=UTF-8
 # 初始化GPIO模块
 # import RPi.GPIO as GPIO
 import RPi.GPIO as GPIO
@@ -25,9 +26,9 @@ def init():
     print("MODE SET BOARD")
     for i in USE_GPIO_OUT_NUM:
         GPIO.setup(i, GPIO.OUT)
-        print(i, "模式设置为:OUT")
+        print(i,"模式设置为:OUT")
         GPIO.output(i, True)
-        print(i, "值设置为:", True)
+        print(i,"值设置为:", True)
     print("初始化启动完成。")
 
 def led_start():

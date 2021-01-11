@@ -1,3 +1,4 @@
+# coding=UTF-8
 import gpio_init
 import led_auto
 import os
