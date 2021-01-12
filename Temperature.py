@@ -103,11 +103,15 @@ def loop():
             if os.path.exists(file_name_ls[0]):
                 os.remove(file_name_ls.pop(0))
 
+def readTemp():
+    setup()
+    return read()
 
 if __name__ == '__main__':
     # try:
-    setup()
-    while True:
-        print(read())
+    # setup()
+    # while True:
+    #     print(read())
+    print(readTemp())
 # except:
 # 	print("program error!")

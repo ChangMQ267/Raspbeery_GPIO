@@ -3,6 +3,7 @@
 # import RPi.GPIO as GPIO
 import RPi.GPIO as GPIO
 import time
+import  Temperature as Temp
 #import led_auto
 #from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -87,6 +88,7 @@ if __name__ == '__main__':
     #GPIO.output(32,False)
     #GPIO.cleanup()
     while True :
+        print(Temp.readTemp())
         key = input()
         if key == "开灯":
             led_start()
