@@ -102,6 +102,11 @@ if __name__ == '__main__':
             # water_end()
         elif key =="停止换水":
             water_end()
+        elif key == "T":
+            while 1 :
+                print(Temp.readTemp())
+                if "0" == input():
+                    break
         else:
             #GPIO.cleanup()
             print("系统已关闭 "
