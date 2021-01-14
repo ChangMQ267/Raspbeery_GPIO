@@ -122,8 +122,7 @@ if __name__ == '__main__':
         elif key == "T":
             while 1:
                 print(Temp.readTemp())
-                if "0" == input():
-                    break
+                time.sleep(3)
         else:
             # GPIO.cleanup()
             print("系统已关闭 "
