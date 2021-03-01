@@ -24,4 +24,4 @@ if __name__ == '__main__':
     gpio.init()
     gpio.add_oxy()
     gpio.water_start()
-    tempauto(22)
+    tempauto(22.5)

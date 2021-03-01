@@ -105,7 +105,7 @@ if __name__ == '__main__':
     # GPIO.output(32,False)
     # GPIO.cleanup()
     while True:
-        print(Temp.readTemp(),"\n")
+      #  print(Temp.readTemp(),"\n")
         key = input()
         if key == "开灯":
             led_start()
