@@ -9,6 +9,7 @@ import time
 
 def tempauto(MinTemp, MaxTemp):
     # GPIO.setmode(GPIO.BOARD)
+    
     while True:
         nowTemp = temp.readTemp()
         print("当前温度为:%.3f" % nowTemp, "设定最低温度为:%.3f" % MinTemp, "设定最高温度为:%.3f" % MaxTemp)
@@ -27,4 +28,4 @@ if __name__ == '__main__':
     gpio.init()
     gpio.add_oxy()
     gpio.water_start()
-    tempauto(22.5, 23)
+    tempauto(22.9, 23)
