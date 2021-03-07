@@ -8,38 +8,44 @@ import os
 spi = spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz = 15600000
-MAXNUM = 0
-
 
 def ReadChannel(channel):
     adc = spi.xfer2([1, (8 + channel) << 4, 0])
     print("adc:", str(adc))
-    readdata = ((adc[1] & 3) << 8) + adc[2]
+    readData = ((adc[1] & 3) << 8) + adc[2]
 
-    return readdata
+    return readData
 
 
-def ConvertTDS(readdata, Temp):
-    Temp_value = 1 + 0.02 * (Temp - 25)
-    data_value = Temp_value * readdata
-    tds_value = 66.71 * data_value * data_value * data_value - 127.93 * data_value * data_value + 428.7 * data_value
+def ConvertTDS(voltage, temperature):
+    temperature = 1 + 0.02 * (temperature - 25)
+
+    # tds_value = 133.42 * voltage * voltage * voltage - 255.86 * voltage * voltage + 857.39 * voltage
+    # tds_value = tds_value / (1.0 + 0.02 * (temperature - 25.0));
+
+    voltage = temperature * voltage
+    tds_value = 66.71 * voltage * voltage * voltage - 127.93 * voltage * voltage + 428.7 * voltage
+
     return tds_value
 
 
-num = 0
-
-while True:
+def TDSRead():
     # for i in range(0, 8):
-    print(num, str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+    print(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
     data = ReadChannel(0)
-    print("data:", data)
-    datatrue = data * (3.3 / float(1023))
-    if data > MAXNUM:
-        MAXNUM = data
-    print("readdata:", datatrue)
+    print("模拟信号量:", data)
+    Vtrue = data * (3.3 / float(1024))   # 电源修正0.17V
+    # if num_Max < Vtrue:
+    #     num_Max = Vtrue
+    print("电压:", Vtrue)
     Temp = temp.readTemp()
-    print("Temp:", Temp)
-    tds = ConvertTDS(datatrue, Temp)
+    print("温度:", Temp)
+    tds = ConvertTDS(Vtrue, Temp)
     print("tds:", tds)
-    time.sleep(2)
-    print(MAXNUM)
+    # print(num_Max)
+
+
+if __name__ == '__main__':
+    while True:
+        TDSRead()
+        time.sleep(2)

@@ -42,24 +42,32 @@ def led_start():
 
 def led_end():
     GPIO.output(37, True)
-
-
-def gpio_32():
-    GPIO.output(32, True)
+#
+#
+# def gpio_32():
+#     GPIO.output(32, True)
 
 
 def firsr_start():
     led_start()
-    water_start()
+    water_start1()
     print("已启动照明、换水装置！")
 
 
-def water_start():
+def water_start1():
+    GPIO.output(32, True)
+
+
+def water_end1():
     GPIO.output(32, False)
 
 
-def water_end():
-    GPIO.output(32, True)
+def water_start2():
+    GPIO.output(40, True)
+
+
+def water_end2():
+    GPIO.output(40, False)
 
 
 def add_temp():
@@ -89,8 +97,8 @@ def stop_add_oxy():
     GPIO.output(38, True)
 
 
-def GPIO_init():
-    GPIO.cleanup()
+# def GPIO_init():
+#     GPIO.cleanup()
 
 
 if __name__ == '__main__':
@@ -100,8 +108,9 @@ if __name__ == '__main__':
     # led_auto()
     # water_end()
     # led_start()
-    add_oxy()
-    water_start()
+    #add_oxy()
+    water_start1()
+    water_start2()
     # GPIO.output(32,False)
     # GPIO.cleanup()
     while True:
@@ -114,11 +123,11 @@ if __name__ == '__main__':
         elif key == "投食":
             eat()
         elif key == "换水":
-            water_start()
+            water_start1()
             # time.sleep(10)
             # water_end()
         elif key == "停止换水":
-            water_end()
+            water_end1()
         elif key == "T":
             while 1:
                 print(Temp.readTemp())
