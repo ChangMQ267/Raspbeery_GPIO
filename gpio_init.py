@@ -14,6 +14,8 @@ import Temperature as Temp
 # 37: 灯管
 # 38: 增氧
 # 40: 换水
+from MakePhoto import photo_eat
+
 USE_GPIO_OUT_NUM = [32, 35, 36, 37, 38, 40]
 
 # 22:
@@ -42,6 +44,8 @@ def led_start():
 
 def led_end():
     GPIO.output(37, True)
+
+
 #
 #
 # def gpio_32():
@@ -107,14 +111,14 @@ if __name__ == '__main__':
     # print("初始化完成\n")
     # led_auto()
     # water_end()
-    # led_start()
-    #add_oxy()
+    led_start()
+    # add_oxy()
     water_start1()
     water_start2()
     # GPIO.output(32,False)
     # GPIO.cleanup()
     while True:
-      #  print(Temp.readTemp(),"\n")
+        #  print(Temp.readTemp(),"\n")
         key = input()
         if key == "开灯":
             led_start()
@@ -122,6 +126,8 @@ if __name__ == '__main__':
             led_end()
         elif key == "投食":
             eat()
+            time.sleep(0.5)
+            photo_eat()
         elif key == "换水":
             water_start1()
             # time.sleep(10)
