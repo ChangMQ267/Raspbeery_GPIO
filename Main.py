@@ -15,6 +15,7 @@ if __name__ == '__main__':
     gpio_init.init()
     gpio_init.led_start()
     #gpio_init.add_oxy()
+    video.video_start()
     while True:
         temp = TempAuto.tempauto(MinTemp, MaxTemp)
         TDS.TDSRead()
