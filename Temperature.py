@@ -22,6 +22,7 @@ def read():
     location = '/sys/bus/w1/devices/' + ds18b20 + '/w1_slave'
     tfile = open(location)
     text = tfile.read()
+    print(text)
     tfile.close()
     secondline = text.split("\n")[1]
     temperaturedata = secondline.split(" ")[9]
