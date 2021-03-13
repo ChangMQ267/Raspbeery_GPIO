@@ -42,6 +42,7 @@ def TDSRead():
     print("温度:", Temp)
     tds = ConvertTDS(Vtrue, Temp)
     print("tds:", tds)
+    return tds
     # print(num_Max)
 
 
