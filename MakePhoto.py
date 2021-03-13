@@ -40,8 +40,8 @@ def photo(status, num):
     for i in range(num):
         local = home + status + "_" + str(time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime()))
         os.system("raspistill -o %s.jpg -w 1280 -h 720 -t 1000" % local)
-        print("No:%d " % i + "raspistill -o %s.jpg -w 1280 -h 720 -t 1000" % local)
-        #time.sleep(1)
+        print("No:%d " % i + "raspistill -o %s.jpg -w 1280 -h 720 -t 10000" % local)
+        time.sleep(1)
 
 
 if __name__ == '__main__':

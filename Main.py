@@ -7,6 +7,7 @@ import TDS
 import video
 from dbUtils import water_status_db
 from led_auto import ledauto
+from AutoMakePhoto import makephoto
 
 MinTemp = 22.9
 MaxTemp = 23
@@ -18,7 +19,7 @@ SetMinuteEnd = 30
 if __name__ == '__main__':
     gpio_init.init()
     # gpio_init.add_oxy()
-    video.video_start()
+    #video.video_start()
 
     while True:
         temp = 0.0

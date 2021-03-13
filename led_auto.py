@@ -1,4 +1,5 @@
 #
+import os
 from datetime import time, datetime
 from time import sleep
 from RPi import GPIO
@@ -25,6 +26,7 @@ def ledauto(setHourStart, setMinuteStart, setHourEnd, setMinuteEnd):
 
     if StartTime <= NowTime <= StopTime and ledStatus == 1:
         gpio.led_start()
+       # os.system("python3 Workspaces/gpio_1/AutoMakePhone.py")
         print("start")
     elif StartTime > NowTime or StopTime < NowTime and ledStatus == 0:
         gpio.led_end()
