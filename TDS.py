@@ -11,7 +11,7 @@ spi.max_speed_hz = 15600000
 
 def ReadChannel(channel):
     adc = spi.xfer2([1, (8 + channel) << 4, 0])
-    print("adc:", str(adc))
+    # print("adc:", str(adc))
     readData = ((adc[1] & 3) << 8) + adc[2]
 
     return readData
@@ -31,17 +31,19 @@ def ConvertTDS(voltage, temperature):
 
 def TDSRead():
     # for i in range(0, 8):
-    print(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+    # print(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
     data = ReadChannel(0)
-    print("模拟信号量:", data)
+    # print("模拟信号量:", data)
     Vtrue = data * (3.3 / float(1024))   # 电源修正0.17V
     # if num_Max < Vtrue:
     #     num_Max = Vtrue
-    print("电压:", Vtrue)
+    # print("电压:", Vtrue)
     Temp = temp.readTemp()
-    print("温度:", Temp)
+    # print("温度:", Temp)
+    if Temp == 0 :
+        return 0
     tds = ConvertTDS(Vtrue, Temp)
-    print("tds:", tds)
+    # print("tds:", tds)
     return tds
     # print(num_Max)
 

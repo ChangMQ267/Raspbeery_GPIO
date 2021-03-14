@@ -13,14 +13,14 @@ def tempauto(MinTemp, MaxTemp):
     temp_status = GPIO.input(36)
     #print(temp_status)
     nowTemp = temp.readTemp()
-    print("当前温度为:%.3f" % nowTemp, "设定最低温度为:%.3f" % MinTemp, "设定最高温度为:%.3f" % MaxTemp)
+    # print("当前温度为:%.3f" % nowTemp, "设定最低温度为:%.3f" % MinTemp, "设定最高温度为:%.3f" % MaxTemp)
     if nowTemp < MinTemp and temp_status == 0:
         gpio.add_temp()
-        temp_status = True
+        temp_status = 1
         print("开启加热")
     elif nowTemp > MaxTemp and temp_status == 1:
         gpio.stop_add_temp()
-        temp_status = False
+        temp_status = 0
         print("停止加热")
     else:
         pass

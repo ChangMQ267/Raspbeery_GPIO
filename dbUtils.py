@@ -8,21 +8,22 @@ def water_status_db(temperature, tds):
     # conn = MySQLd.connect("localhost", "root", "123456", "fish_know", charset="utf8mb4")
     cursor = db.cursor()
     # sql = "select * from water_status"
-    print(datetime.now())
+    # print(datetime.now())
     sql = "INSERT INTO water_status(datetime,temp, tds) VALUES ('%s','%f','%f')" % (
     datetime.now(), temperature, tds)
-    cursor.execute(sql)
-    db.commit()
-    # try:
-    # # 执行sql语句
-    #     cursor.execute(sql)
-    # # 执行sql语句
-    #     db.commit()
-    # except:
-    # # 发生错误时回滚
-    #     db.rollback()
-    #     print("bug")
-    # # 关闭数据库连接
+    # cursor.execute(sql)
+    # db.commit()
+    try:
+    # 执行sql语句
+        cursor.execute(sql)
+    # 执行sql语句
+        db.commit()
+        print(datetime.now(),"温度：", temperature,"TDS：", tds)
+    except:
+    # 发生错误时回滚
+        db.rollback()
+        print("数据库bug")
+    # 关闭数据库连接
     db.close()
 
 

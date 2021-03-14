@@ -19,16 +19,22 @@ def setup():
 
 def read():
     #	global ds18b20
-    location = '/sys/bus/w1/devices/' + ds18b20 + '/w1_slave'
-    tfile = open(location)
-    text = tfile.read()
-    print(text)
-    tfile.close()
-    secondline = text.split("\n")[1]
-    temperaturedata = secondline.split(" ")[9]
-    temperature = float(temperaturedata[2:])
-    temperature = temperature / 1000
-    return temperature
+    try:
+        location = '/sys/bus/w1/devices/' + ds18b20 + '/w1_slave'
+        tfile = open(location)
+        text = tfile.read()
+        # print(text)
+        tfile.close()
+        secondline = text.split("\n")[1]
+        temperaturedata = secondline.split(" ")[9]
+        temperature = float(temperaturedata[2:])
+        temperature = temperature / 1000
+        return temperature
+    except:
+        print("温度传感器异常")
+        return 0
+
+
 
 def readTemp():
     setup()
