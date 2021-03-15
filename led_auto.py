@@ -27,12 +27,12 @@ def ledauto(setHourStart, setMinuteStart, setHourEnd, setMinuteEnd):
     if StartTime <= NowTime <= StopTime and ledStatus == 1:
         gpio.led_start()
        # os.system("python3 Workspaces/gpio_1/AutoMakePhone.py")
-        print("start")
+        print("LED start")
     elif StartTime > NowTime or StopTime < NowTime and ledStatus == 0:
         gpio.led_end()
-        print("End")
+        print("LED End")
     else:
-        print(NowTime)
+        pass
     # 逻辑缺陷
     # if ledStatus == 1 and (setHourStart <= nowHour and setMinuteStart <= nowMinute) and (
     #         setMinuteEnd >= nowMinute and setHourEnd >= nowHour):
