@@ -1,5 +1,5 @@
 # Raspbeery_GPIO
-基于树莓派的鱼缸养殖系统
+基于树莓派的观赏鱼养殖系统
 
 #安装
 sudo ./install.sh
