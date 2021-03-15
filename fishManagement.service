@@ -1,0 +1,9 @@
+[Unit]
+Description=FishManagerment v1.0
+
+[Service]
+Type=simple
+ExecStart=sudo /usr/bin/fishManagement_start.sh
+
+[Install]
+WantedBy=multi-user.target
