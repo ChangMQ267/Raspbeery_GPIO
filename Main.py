@@ -18,7 +18,7 @@ SetMinuteEnd = 30
 if __name__ == '__main__':
     gpio_init.init()
     # gpio_init.add_oxy()
-    #video.video_start()
+    video.video_start()
     status = 1
     while True:
         temp = 0.0
