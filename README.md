@@ -1,6 +1,5 @@
 # Raspbeery_GPIO
-树莓派GPIO控制
-使用ds18b20 作为温度传感器
+基于树莓派的鱼缸养殖系统
 
 #安装
 sudo ./install.sh
