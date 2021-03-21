@@ -35,10 +35,10 @@ def read():
         return 0
 
 
-
 def readTemp():
     setup()
     return read()
+
 
 if __name__ == '__main__':
     # try:

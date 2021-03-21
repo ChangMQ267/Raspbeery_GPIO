@@ -1,6 +1,8 @@
 # /usr/bin/python3
+# -*- coding: UTF-8 -*-
 import time
 
+import Temperature
 import gpio_init
 import TempAuto
 import TDS
@@ -17,18 +19,23 @@ SetMinuteEnd = 30
 
 if __name__ == '__main__':
     gpio_init.init()
-    # gpio_init.add_oxy()
+    gpio_init.add_oxy()
     video.video_start()
+    gpio_init.stop_add_temp()
+    # gpio_init.eat()
+    # gpio_init.water_end2()
     status = 1
     while True:
         temp = 0.0
         TDSNum = 0.0
         ledauto(SetHourStart, SetMinuteStart, SetHourEnd, SetMinuteEnd)
-        temp = TempAuto.tempauto(MinTemp, MaxTemp)
+        # temp = TempAuto.tempauto(MinTemp, MaxTemp)
+        temp = Temperature.readTemp()
         TDSNum = TDS.TDSRead()
-        if temp == 0.0 or TDSNum == 0.0 or status == 1:
-            status = 0
-            continue
-        else:
-            water_status_db(temp, TDSNum)
+        print("temp:", temp, "   ", "tds:", TDSNum)
+        # if temp == 0.0 or TDSNum == 0.0 or status == 1:
+        #     status = 0
+        #     continue
+        # else:
+        #     water_status_db(temp, TDSNum)
         time.sleep(3)

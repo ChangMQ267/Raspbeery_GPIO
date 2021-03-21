@@ -1,3 +1,6 @@
+# /usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 import pymysql as mysql
 from datetime import datetime, time
 
@@ -10,17 +13,17 @@ def water_status_db(temperature, tds):
     # sql = "select * from water_status"
     # print(datetime.now())
     sql = "INSERT INTO water_status(datetime,temp, tds) VALUES ('%s','%f','%f')" % (
-    datetime.now(), temperature, tds)
+        datetime.now(), temperature, tds)
     # cursor.execute(sql)
     # db.commit()
     try:
-    # 执行sql语句
+        # 执行sql语句
         cursor.execute(sql)
-    # 执行sql语句
+        # 执行sql语句
         db.commit()
-        print(datetime.now(),"温度：", temperature,"TDS：", tds)
+        print(datetime.now(), "温度：", temperature, "TDS：", tds)
     except:
-    # 发生错误时回滚
+        # 发生错误时回滚
         db.rollback()
         print("数据库bug")
     # 关闭数据库连接

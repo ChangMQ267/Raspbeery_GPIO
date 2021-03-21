@@ -1,4 +1,6 @@
+# /usr/bin/python3
 # coding=UTF-8
+
 # 初始化GPIO模块
 # import RPi.GPIO as GPIO
 import RPi.GPIO as GPIO

@@ -1,4 +1,5 @@
 # /usr/bin/python3
+# -*- coding: UTF-8 -*-
 import spidev
 import time
 import Temperature as temp
@@ -8,6 +9,7 @@ import os
 spi = spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz = 15600000
+
 
 def ReadChannel(channel):
     adc = spi.xfer2([1, (8 + channel) << 4, 0])
@@ -34,13 +36,13 @@ def TDSRead():
     # print(str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
     data = ReadChannel(0)
     # print("模拟信号量:", data)
-    Vtrue = data * (3.3 / float(1024))   # 电源修正0.17V
+    Vtrue = data * (3.3 / float(1024))  # 电源修正0.17V
     # if num_Max < Vtrue:
     #     num_Max = Vtrue
     # print("电压:", Vtrue)
     Temp = temp.readTemp()
     # print("温度:", Temp)
-    if Temp == 0 :
+    if Temp == 0:
         return 0
     tds = ConvertTDS(Vtrue, Temp)
     # print("tds:", tds)
