@@ -7,6 +7,7 @@ import gpio_init
 import TempAuto
 import TDS
 import video
+from AutoOXY import oxyauto
 from dbUtils import water_status_db
 from led_auto import ledauto
 
@@ -16,7 +17,10 @@ SetHourStart = 8
 SetMinuteStart = 0
 SetHourEnd = 21
 SetMinuteEnd = 30
-
+OxyStartHour = 7
+OxyStartMinute = 30
+OxyStopHour = 10
+OxyStopMinute = 30
 if __name__ == '__main__':
     gpio_init.init()
     gpio_init.add_oxy()
@@ -29,8 +33,9 @@ if __name__ == '__main__':
         temp = 0.0
         TDSNum = 0.0
         ledauto(SetHourStart, SetMinuteStart, SetHourEnd, SetMinuteEnd)
-        # temp = TempAuto.tempauto(MinTemp, MaxTemp)
-        temp = Temperature.readTemp()
+        oxyauto(OxyStartHour,OxyStartMinute,OxyStopHour,OxyStopMinute)
+        temp = TempAuto.tempauto(MinTemp, MaxTemp)
+        #temp = Temperature.readTemp()
         TDSNum = TDS.TDSRead()
         print("temp:", temp, "   ", "tds:", TDSNum)
         # if temp == 0.0 or TDSNum == 0.0 or status == 1:

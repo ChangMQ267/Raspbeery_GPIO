@@ -8,7 +8,7 @@ def video_start():
     #     os.system("ps -ef | grep gst-launch-1.0 | awk '{print $2}' | sudo xargs kill -9")
     # except:
     #     pass
-    os.system("raspivid -o - -t 0 -w 1280 -h 720 -fps 30 -mm average | cvlc -vvv stream:///dev/stdin --sout '#standard{access=rtmp,mux=ffmpeg{mux=flv},dst=rtmp://localhost/fish/live }' :demux=h264 --h264-fps = 30 :no-sout-all &")
+    os.system("raspivid -o - -t 0 -w 1280 -h 720 -fps 30 -n -mm average | cvlc -vvv stream:///dev/stdin --sout '#standard{access=rtmp,mux=ffmpeg{mux=flv},dst=rtmp://localhost/fish/live }' :demux=h264 --h264-fps = 30 :no-sout-all &")
     # sudo raspivid -o - -t 0 -rot 180 -w 1280 -h 720 -fps 25 -mm average|cvlc -vvv stream:///dev/stdin --sout '#standard{access=http,mux=ts,dst=:8090}' :demux=h264
     # os.system("raspivid -t 0 -w 1280 -h 720 -fps 20 -o - | nc -k -l 8090 &")
     # os.system("sudo raspivid -o - -t 0 -w 1280 -h 720 -fps 29 -mm average|cvlc -vvv stream:///dev/stdin --sout '#standard{access=http,mux=ts,dst=:8090}' :demux=h264 --h264-fps = 60 :no-sout-all &")
